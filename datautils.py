@@ -1,5 +1,6 @@
 from zipfile import ZipFile
 import pandas as pd
+import great_expectations as ge
 
 def load():
     filename = "Data/raw.zip"
@@ -7,7 +8,7 @@ def load():
     with ZipFile(filename, 'r') as zp:
         zp.extract('booking_train_set.csv', 'Data/')
 
-    df = pd.read_csv("data/booking_train_set.csv", index_col=0)
+    df = ge.read_csv("data/booking_train_set.csv", index_col=0)
 
     cats = ['user_id',
             'city_id',
